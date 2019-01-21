@@ -286,8 +286,8 @@ class CoinpaprikaCoin:
                 ]
         """
         params = {
-            "start": start.timestamp(),
-            "end": end.timestamp(),
+            "start": int(start.timestamp()),
+            "end": int(end.timestamp()),
             "limit": limit,
             "quotes": ",".join(quotes)
         }
@@ -323,7 +323,7 @@ class CoinpaprikaCoin:
         return entries
 
     @staticmethod
-    def current_OHLC(coin_id, quote="USD") -> List[Dict]:
+    def today_OHLC(coin_id, quote="USD") -> List[Dict]:
         """
         Open/High/Low/Close values with volume and market_cap for today
         :param coin_id:

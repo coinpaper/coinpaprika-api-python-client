@@ -1,7 +1,8 @@
 from src import CoinpaprikaClient
+from datetime import datetime, timedelta
 
 if __name__ == "__main__":
-    client = CoinpaprikaClient()
-    print(client.coins.with_id("btc-bitcoin"))
+    api_client = CoinpaprikaClient()
+    binance_markets = api_client.exchanges.markets("binance")
 
-
+    print(binance_markets)

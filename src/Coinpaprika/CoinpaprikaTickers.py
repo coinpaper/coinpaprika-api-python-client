@@ -203,11 +203,10 @@ class CoinpaprikaTickers:
                 }
         """
         quotes_str = ",".join(quotes)
-        tickers = Coinpaprika.get(f"/tickers/{coin_id}", params={"quotes": quotes_str})
-        for ticker in tickers:
-            Coinpaprika.convert_date_in_dict(ticker, "first_data_at")
-            Coinpaprika.convert_date_in_dict(ticker, "last_updated")
-        return tickers
+        ticker = Coinpaprika.get(f"/tickers/{coin_id}", params={"quotes": quotes_str})
+        Coinpaprika.convert_date_in_dict(ticker, "first_data_at")
+        Coinpaprika.convert_date_in_dict(ticker, "last_updated")
+        return ticker
 
     @staticmethod
     def historical_ticker_for_coin(coin_id: str, start: datetime, end: datetime, limit=1000, quote="USD", interval="5m") -> List[Dict]:
@@ -230,8 +229,8 @@ class CoinpaprikaTickers:
                 ]
         """
         params = {
-            "start": start.timestamp(),
-            "end": end.timestamp(),
+            "start": int(start.timestamp()),
+            "end": int(end.timestamp()),
             "limit": limit,
             "quote": quote,
             "interval": interval,

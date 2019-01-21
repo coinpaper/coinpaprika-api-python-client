@@ -23,7 +23,7 @@ class Coinpaprika:
         request_url = f"{Coinpaprika.API_URL}{endpoint}?{query_string}"
         response = Coinpaprika.session.get(request_url)
         if not 200 <= response.status_code < 300:
-            raise CoinpaprikaError(response)
+            raise CoinpaprikaError(response, request_url)
         return response.json()
 
     @staticmethod
@@ -43,8 +43,9 @@ class Coinpaprika:
 
 class CoinpaprikaError(BaseException):
 
-    def __init__(self, response):
+    def __init__(self, response, request_url):
         self.status_code = 0
+        self.request_url = request_url
         self.message = ""
 
         try:
@@ -59,5 +60,5 @@ class CoinpaprikaError(BaseException):
         self.request = getattr(response, 'request', None)
 
     def __str__(self):
-        return f"CoinpaprikaAPIException<status_code={self.status_code} message='{self.message}'>"
+        return f"CoinpaprikaAPIException<status_code={self.status_code} message='{self.message}' url='{self.request_url}'>"
 
