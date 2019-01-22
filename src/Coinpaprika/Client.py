@@ -8,7 +8,7 @@ from .CoinpaprikaTickers import CoinpaprikaTickers
 from .CoinpaprikaExchanges import CoinpaprikaExchanges
 
 
-class CoinpaprikaClient():
+class Client():
     """
     Coinpaprika API delivers free & frequently updated market data from the
     world of crypto: coin prices, volumes, market caps, ATHs, return rates and more.
