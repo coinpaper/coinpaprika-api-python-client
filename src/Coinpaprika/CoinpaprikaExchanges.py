@@ -167,7 +167,7 @@ class CoinpaprikaExchanges:
         return exchange
 
     @staticmethod
-    def exchange_markets(exchange_id: str, quotes=tuple(["USD"])) -> List[Dict]:
+    def markets(exchange_id: str, quotes=tuple(["USD"])) -> List[Dict]:
         """
         List markets by exchange ID
         :param exchange_id: Example: binance
