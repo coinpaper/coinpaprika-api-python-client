@@ -10,7 +10,7 @@ The here provided wrapper for the coinpaprika API is delivered under the MIT Lic
 The package is uploaded to PyPi.
 
 ```
-pip install coinpaprika-api
+pip install coinpaprika-client
 ```
 
 ## Global
@@ -18,9 +18,9 @@ pip install coinpaprika-api
 ### Get market overview data
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 market_overview = api_client.global_market_overview()
 ```
 
@@ -29,18 +29,18 @@ market_overview = api_client.global_market_overview()
 ### List coins
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 all_coins = api_client.coins()
 ```
 
 ### Get coin by ID
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 bitcoin = api_client.coins.with_id("btc-bitcoin")
 ```
 
@@ -49,36 +49,36 @@ bitcoin = api_client.coins.with_id("btc-bitcoin")
 Not more than last 50 tweets
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 twitter_timeline = api_client.coins.twitter("btc-bitcoin")
 ```
 
 ### Get coin events by coin ID
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 events = api_client.coins.events("btc-bitcoin")
 ```
 
 ### Get exchanges by coin ID
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 exchanges = api_client.coins.exchanges("btc-bitcoin")
 ```
 
 ### Get markets by coin ID
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 markets = api_client.coins.markets("btc-bitcoin")
 ```
 
@@ -87,9 +87,9 @@ markets = api_client.coins.markets("btc-bitcoin")
 Open/High/Low/Close values with volume and market_cap
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 last_OHLC = api_client.coins.last_OHLC("btc-bitcoin")
 ```
 
@@ -98,10 +98,10 @@ last_OHLC = api_client.coins.last_OHLC("btc-bitcoin")
 Open/High/Low/Close values with volume and market_cap. Request example: https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/historical?start=2019-01-01&end=2019-01-20 if the last day is current day it can an change with every request until actual close of the day at 23:59:59
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 from datetime import datetime, timedelta
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 historical_OHLC = api_client.coins.historical_OHLC(
     coin_id="btc-bitcoin",
     start=datetime.now() - timedelta(weeks=1),
@@ -115,9 +115,9 @@ historical_OHLC = api_client.coins.historical_OHLC(
 Open/High/Low/Close values with volume and market_cap for today
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 todays_OHLC = api_client.coins.today_OHLC(coin_id="btc-bitcoin")
 ```
 
@@ -126,9 +126,9 @@ todays_OHLC = api_client.coins.today_OHLC(coin_id="btc-bitcoin")
 ### Get people by ID
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 vitalik = api_client.people.with_id("vitalik-buterin")
 ```
 
@@ -137,18 +137,18 @@ vitalik = api_client.people.with_id("vitalik-buterin")
 ### List tags
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 tags = api_client.tags()
 ```
 
 ### Get tag by ID
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 tag = api_client.tags.with_id("blockchain-service")
 ```
 
@@ -157,18 +157,18 @@ tag = api_client.tags.with_id("blockchain-service")
 ### Get tickers for all coins
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 tickers = api_client.tickers()
 ```
 
 ### Get ticker information for specific coin
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 btc_ticker = api_client.tickers.for_coin("btc-bitcoin")
 ```
 
@@ -176,10 +176,10 @@ btc_ticker = api_client.tickers.for_coin("btc-bitcoin")
 ### Get historical tickers for specific coin
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 from datetime import datetime, timedelta
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 historical_ticker = api_client.tickers.historical_ticker_for_coin(
     coin_id="btc-bitcoin",
     start=datetime.now() - timedelta(weeks=1),
@@ -194,26 +194,26 @@ historical_ticker = api_client.tickers.historical_ticker_for_coin(
 ### List exchanges
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 exchanges = api_client.exchanges()
 ```
 
 ### Get exchange by ID
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 binance = api_client.exchanges.with_id("binance")
 ```
 
 ### List markets by exchange ID
 
 ```python
-import CoinpaprikaClient
+import Coinpaprika
 
-api_client = CoinpaprikaClient()
+api_client = Coinpaprika.Client()
 binance_markets = api_client.exchanges.markets("binance")
 ```

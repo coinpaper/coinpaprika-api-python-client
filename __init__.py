@@ -1,1 +1,1 @@
-from .src import CoinpaprikaClient
+from .src import Client

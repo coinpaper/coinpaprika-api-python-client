@@ -1,6 +1,6 @@
 from .CoinpaprikaCoin import CoinpaprikaCoin
 from .Coinpaprika import Coinpaprika
-from .CoinpaprikaClient import CoinpaprikaClient
+from .Client import Client
 from .CoinpaprikaPeople import CoinpaprikaPeople
 from .CoinpaprikaTags import CoinpaprikaTags
 from .CoinpaprikaTickers import CoinpaprikaTickers
