@@ -1,5 +1,6 @@
 from urllib.parse import urlencode
 from datetime import datetime
+import time
 
 import requests
 
@@ -16,11 +17,23 @@ class Coinpaprika:
     API_URL = "https://api.coinpaprika.com/v1"
     session = requests_session
 
+    _max_requests_per_second = 8 # Official limit is 10, but we keep it safe here
+    _sent_request_timestamps = []
+
+    @staticmethod
+    def limit_rate():
+        if len(Coinpaprika._sent_request_timestamps) > Coinpaprika._max_requests_per_second:
+            time_difference = datetime.now().timestamp() - Coinpaprika._sent_request_timestamps[-Coinpaprika._max_requests_per_second]
+            time_to_wait = max(1 - time_difference, 0)
+            time.sleep(time_to_wait)
+        Coinpaprika._sent_request_timestamps.append(datetime.now().timestamp())
+
     @staticmethod
     def get(endpoint, params=None):
         query_params = params if params else {}
         query_string = urlencode(query_params)
         request_url = f"{Coinpaprika.API_URL}{endpoint}?{query_string}"
+        Coinpaprika.limit_rate()
         response = Coinpaprika.session.get(request_url)
         if not 200 <= response.status_code < 300:
             raise CoinpaprikaError(response, request_url)
