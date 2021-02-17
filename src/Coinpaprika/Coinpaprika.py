@@ -17,7 +17,7 @@ class Coinpaprika:
     API_URL = "https://api.coinpaprika.com/v1"
     session = requests_session
 
-    _max_requests_per_second = 8 # Official limit is 10, but we keep it safe here
+    _max_requests_per_second = 5 # Official limit is 10, but we keep it safe here
     _sent_request_timestamps = []
 
     @staticmethod
