@@ -41,6 +41,8 @@ class Coinpaprika:
 
     @staticmethod
     def convert_date(date):
+        if not date:
+            return
         return datetime.strptime(date, '%Y-%m-%dT%H:%M:%SZ')
 
     @staticmethod

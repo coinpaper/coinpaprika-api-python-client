@@ -6,7 +6,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 setuptools.setup(
     name='coinpaprika-client',
     author='coinpaper.io',
-    version = '1.1.1',
+    version = '1.1.2',
     author_email='contact@coinpaper.io',
     description='Coinpaprika API client written in Python',
     keywords='coinpaprika, api, wrapper, client, python',
